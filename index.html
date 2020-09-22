@@ -1,59 +1,37 @@
 <!doctype HTML>
 <!--span>Photo by <a href="https://unsplash.com/@kristapsungurs?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Kristaps Ungurs</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span-->
-
 <head>
     <link rel="stylesheet" href="bootstrap.css" />
     <link rel="stylesheet" href="stylesheet.css" />
     <script src="jquery-3.5.1.js"></script>
     <script src="popper.js"></script>
     <script src="bootstrap.js"></script>
+    <script src="page.js"></script>
+    <script>
+    function setActive(element) {
+      $('.nav-link').removeClass('active');
+      $(element).addClass('active');
+    }
+    </script>
 </head>
 <body>
-  <header>
-    This is a blank header
-  </header>
-  <header>
-    <nav>
-      <a href="/blog">Blog</a>
-      <a href="/projects">Projects</a>
-      <a href="/aboutme">About Me</a>
-    </nav>
-  </header>
-  <main>
-    <section>
-      Header group in a section:
-      <hgroup>
-        <h1>Header one</h1>
-        <h1>Header one, again</h1>
-        <h2>Header two</h2>
-        <h3>Header three</h3>
-        <h4>Header four</h4>
-        <h5>Header five</h5>
-        <h6>Header six</h6>
-      </hgroup>
-    </section>
-    <section>
-      Section with articles:
-      <article>This is a cool article</article>
-      <aside>But here's a sidenote</aside>
-      <article>
-        Here's a new article
-        <aside>
-          This sidenote is inside the article
-          <cite>MLA citation</cite>
-          <abbr title="Modern Language Association">MLA</abbr>
-          <blockquote>This is a blockquote</blockquote>
-          Aside over
-        </aside>
-        End of the article
-      </article>
-      Section complete.
-    </section>
-    return 0; //main()
-  </main>
-  <footer>
-    This is a footer.
-    <address>I don't want to tell you my address@hotmail.com</address>
-    <span>Photo by <a href="https://unsplash.com/@does_not_travel_often?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Parker Miller</a> on <a href="https://unsplash.com/?utm_source=unsplash&amp;utm_medium=referral&amp;utm_content=creditCopyText">Unsplash</a></span>
-  </footer>
+  <div class="float-left bg-light border-right border-bottom" id="sidebar-wrapper">
+    <div class="sidebar-heading">Chat <button onclick="$('.chat-visibility').toggleClass('d-none');">Hide</button></div>
+    <div class="row chat-visibility"><div class="col"><textarea style="height: 20em;" id="chat_log"></textarea></div></div>
+    <div class="row chat-visibility"><div class="col"><input id="chat_message_input" type="text" placeholder="Type yer message here"></div></div>
+  </div>
+  <div class="container">
+      <nav class="nav nav-pills justify-content-left">
+          <a class="nav-link active" id="nav-link-main" onclick="$('main').load('main.html', function() { setActive('#nav-link-main'); });">Main page</a>
+          <a class="nav-link" id="nav-link-blog" onclick="$('main').load('blog.html', function() { setActive('#nav-link-blog'); });">Blog</a>
+          <a class="nav-link" id="nav-link-projects" onclick="$('main').load('projects.html', function() { setActive('#nav-link-projects'); });">Projects</a>
+          <a class="nav-link" id="nav-link-aboutme" onclick="$('main').load('aboutme.html', function() { setActive('#nav-link-aboutme'); });">About me</a>
+      </nav>
+    <main></main>
+    <script>$('#nav-link-main').click();</script>
+  </div>
 </body>
+<footer class="navbar fixed-bottom">
+  This is a footer. Copyright nobody 2020.
+</footer>
+</html>
